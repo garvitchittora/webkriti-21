@@ -1,3 +1,92 @@
-Hello World {{test}}
+{% extends 'base.html' %} {% load static %} {% block body %}
+<div class="hero home-page">
+    <div class="banner">
+        <div class="container">
+            <div class="row banner-section">
+                <div class="col-lg-6">
+                    <img src="{% static 'image/svgs/home.svg'%}" class="home-banner-image" />
+                </div>
+                <div class="col-lg-6">
+                    <h1>Cultural Societies of IIIT-A</h1>
+                    <p class="website-subheading">
+                        The cultural activities at IIITA are coordinated by the Cultural Council and play a crucial role in fostering creativity and confidence among students. 
+                        These events are directed towards developing balanced and well-rounded individuals. 
+                        Over the years, the student body has come up with a plethora of events and competitions covering a vast spectrum of activities including drama, photography, art expo and much more.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="feature-div">
+        <div class="container">
+            <h3 class="subheading">Societies</h3>
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="feature-wrapper">
+                        {% for x in society %}
+                        <div class="feature">
+                            <div class="count">
+                                <span>0{{ forloop.counter }}</span>
+                            </div>
+                            <div>
+                                <a href="/society/{{x.slug}}">
+                                    <h2 class="society-name">{{x.name}}</h2>
+                                </a>
+                                <div class="society-content">
+                                    <div>
+                                        <p>{{x.bio}}</p>
+                                    </div>
+                                    <div>
+                                        <a href="/society/{{x.slug}}">
+                                            <img src="media/{{x.image}}" alt="{{x.name}}">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <a class="society-fb-link" href="{{x.fb}}">
+                                        <i class="fa fa-facebook" aria-hidden="true"></i> FB Page Link
+                                    </a>
+                                </div>
+                                <div class="coordinator-div">
+                                    <h3>
+                                        Coordinators:
+                                    </h3>
 
-<img src="{{request.user.image.url}}">
+                                    <ul>
+                                        {% for coordi in x.coordi %}
+                                        <li>
+                                            <p>
+                                                {{coordi.get_full_name}}
+                                            </p>
+                                            <p>
+                                                Email: <a href="mailto:{{coordi.email}}">{{coordi.email}}</a>
+                                            </p>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-lg-3 desktop-visible side-nav">
+                    <h2>
+                        Society List
+                    </h2>
+                    <ul>
+                        {% for x in society %}
+                        <li>
+                            <a href="/society/{{x.slug}}">
+                                {{x.name}}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

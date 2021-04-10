@@ -41,12 +41,20 @@ class UserManager(BaseUserManager):
 
         return self._create_user(email, password, **extra_fields)
 
+class Society(models.Model):
+    image = models.ImageField(upload_to ='society/', null=True, blank=True) 
+    name = models.CharField(max_length=150, null=True, blank=True)
+    bio = models.CharField(max_length=1500, null=True, blank=True)
+    slug = models.SlugField(max_length=250,null=True,blank=True,unique=True)
+    fb = models.URLField(max_length = 10000, null=True, blank=True)
+
 class User(AbstractUser):
     email = models.EmailField(_('email address'), unique=True)
     image = models.ImageField(upload_to ='user/', null=True, blank=True) 
     slug = models.SlugField(max_length=250,null=True,blank=True,unique=True)
     bio = models.CharField(max_length=1500, null=True, blank=True)
     power_value = models.IntegerField(default=0)
+    society = models.ForeignKey(Society,null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.email
@@ -54,12 +62,6 @@ class User(AbstractUser):
     def save(self, *args, **kwargs):
         self.username = self.email
         super(User, self).save(*args, **kwargs)
-
-class Society(models.Model):
-    image = models.ImageField(upload_to ='society/', null=True, blank=True) 
-    name = models.CharField(max_length=150, null=True, blank=True)
-    bio = models.CharField(max_length=1500, null=True, blank=True)
-    slug = models.SlugField(max_length=250,null=True,blank=True,unique=True)
 
 class Gallery(models.Model):
     image = models.ImageField(upload_to ='gallery/', null=True, blank=True)
@@ -72,3 +74,30 @@ class Event(models.Model):
     society = models.ForeignKey(Society,null=True, blank=True, on_delete=models.SET_NULL)
     slug = models.SlugField(max_length=250,null=True,blank=True,unique=True)
     name = models.CharField(max_length=150, null=True, blank=True)
+
+def createSlug(instance,text,new_slug=None):
+    slug=slugify(text)
+    if new_slug is not None:
+        slug=new_slug
+
+    qs=Society.objects.filter(slug=slug).order_by("-id")
+    exists=qs.exists()
+    if exists and qs.first() != instance:
+        new_slug="%s-%s" %(slug , qs.count())
+        return createSlug(instance,text,new_slug=new_slug)             
+    return slug
+
+def generateSlugSociety(sender,instance,*arg,**k):
+    instance.slug=createSlug(instance,instance.name)
+
+pre_save.connect(generateSlugSociety,sender=Society)
+
+def generateSlugEvent(sender,instance,*arg,**k):
+    instance.slug=createSlug(instance,instance.name)
+
+pre_save.connect(generateSlugEvent,sender=Event)
+
+def generateSlugUser(sender,instance,*arg,**k):
+    instance.slug=createSlug(instance,instance.get_full_name())
+
+pre_save.connect(generateSlugUser,sender=User)
