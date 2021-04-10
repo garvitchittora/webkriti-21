@@ -2,3 +2,4 @@
 __pycache__
 migrations
 task/db.sqlite3
+task/media
