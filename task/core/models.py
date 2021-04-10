@@ -41,6 +41,7 @@ class UserManager(BaseUserManager):
 
         return self._create_user(email, password, **extra_fields)
 
+# Society Model
 class Society(models.Model):
     image = models.ImageField(upload_to ='society/', null=True, blank=True) 
     name = models.CharField(max_length=150, null=True, blank=True)
@@ -48,6 +49,7 @@ class Society(models.Model):
     slug = models.SlugField(max_length=250,null=True,blank=True,unique=True)
     fb = models.URLField(max_length = 10000, null=True, blank=True)
 
+# User Model
 class User(AbstractUser):
     email = models.EmailField(_('email address'), unique=True)
     image = models.ImageField(upload_to ='user/', null=True, blank=True) 
@@ -62,11 +64,13 @@ class User(AbstractUser):
         self.username = self.email
         super(User, self).save(*args, **kwargs)
 
+# Gallery Model
 class Gallery(models.Model):
     image = models.ImageField(upload_to ='gallery/', null=True, blank=True)
     alt = models.CharField(max_length=150, null=True, blank=True)
     society = models.ForeignKey(Society,null=True, blank=True, on_delete=models.SET_NULL)
 
+# Event Model
 class Event(models.Model):
     image = models.ImageField(upload_to ='event/', null=True, blank=True)
     bio = models.CharField(max_length=1500, null=True, blank=True)

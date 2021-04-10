@@ -161,6 +161,25 @@
               </div>
             </div>
 
+            <button type="button" class="btn btn-success modalOpenButton float-right"
+            style="margin-right: 10px;margin-bottom: 10px;">Make Announcement</button>
+          <div class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <form class="login-form profile-form" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" name="form-value" value="4">
+                <div>
+                  <input type="email" name="email" autofocus="" placeholder="email">
+                </div>
+                <div>
+                  <textarea placeholder="Bio" rows="5" name="bio" style="width:100%;"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+              </form>
+            </div>
+          </div>
+
             {% endif %}
           </div>
         </div>

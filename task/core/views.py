@@ -11,6 +11,7 @@ from .models import *
 
 # Create your views here.
 
+# Home View
 def home(request):
     societies = Society.objects.all()
     
@@ -23,6 +24,7 @@ def home(request):
 
     return render(request, "home.html",data)
 
+# Society View
 def societyPage(request,slug):
     societies = Society.objects.all()
     
@@ -76,6 +78,15 @@ def societyPage(request,slug):
                     event.bio = request.POST.get('bio')  
                 event.save()
 
+            elif request.POST["form-value"] == "4":
+                subject = 'Announcement by '+ society.name
+                message = request.POST.get('bio')
+                if request.POST['email'] != '':
+                    email = EmailMessage(
+                                subject, message, to=[request.POST['email']]
+                    )
+                    email.send()
+
         data = {
             "society":societies,
             "societyData": society,
@@ -93,5 +104,6 @@ def societyPage(request,slug):
 
     return render(request, "404.html",data)  
 
+# Forgot Password
 def account_activation_sent(request):
     return render(request, 'registration/account_activation_sent.html')
