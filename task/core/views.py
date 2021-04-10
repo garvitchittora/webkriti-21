@@ -57,12 +57,14 @@ def societyPage(request,slug):
                     gallery.save()
 
             elif request.POST["form-value"] == "3":
-                if request.POST['blog-id']:
-                    blog_id = request.POST['blog-id']
-                    if Blog.objects.filter(id = blog_id).exists():
-                        blog = Blog.objects.filter(id = blog_id).first()
-                        if request.user == blog.user:
-                            blog.delete()
+                event = Event(society = society)
+                if request.POST['name'] != '':
+                    event.name = request.POST['name']
+                if request.FILES.get('image'):   
+                    event.image=request.FILES.get('image')
+                if request.POST.get('bio', False) and request.POST["bio"] != 'None':
+                    event.bio = request.POST.get('bio')  
+                event.save()
 
         data = {
             "society":societies,
