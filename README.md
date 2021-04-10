@@ -10,3 +10,7 @@ python manage.py makemigrations core
 python manage.py migrate
 python manage.py createsuperuser
 python3 manage.py runserver
+
+<!-- {% load sass_tags %}
+
+<link href="{% sass_src 'sass/style.sass' %}" rel="stylesheet" type="text/css" /> -->
