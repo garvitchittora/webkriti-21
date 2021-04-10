@@ -1,4 +1,4 @@
-STEPS TO RUN PROJECT
+#STEPS TO RUN PROJECT
 
 install virtualenv if not installed: sudo pip3 install virtualenv
 create virtual environment: virtualenv .env
@@ -10,7 +10,3 @@ python manage.py makemigrations core
 python manage.py migrate
 python manage.py createsuperuser
 python3 manage.py runserver
-
-<!-- {% load sass_tags %}
-
-<link href="{% sass_src 'sass/style.sass' %}" rel="stylesheet" type="text/css" /> -->
