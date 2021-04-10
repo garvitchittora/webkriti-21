@@ -107,20 +107,15 @@
                         Upload Image
                       </p>
                     </label>
-                    <input accept="image/*" onchange="readURL(this,'#image2');" id="file-input2" type="file" name="image2"
+                    <input accept="image/*" onchange="readURL(this,'#image2');" id="file-input2" type="file" name="image"
                       style="width: 0;height: 0;overflow: hidden;" />
                   </div>
                   <div>
-                    <input type="text" name="name" autofocus="" placeholder="name" value="{{societyData.name}}">
-                  </div>
-                  <div>
-                    <textarea placeholder="Bio" rows="5" name="bio"
-                      style="width:100%;">{% if societyData.bio %}{{societyData.bio}}{% endif %}</textarea>
+                    <input type="text" name="alt" autofocus="" placeholder="alt text">
                   </div>
                   <button type="submit" class="btn btn-success">Submit</button>
                 </form>
               </div>
-            
             </div>
 
             <button type="button" class="btn btn-success modalOpenButton float-right"
@@ -139,7 +134,7 @@
                         Upload Image
                       </p>
                     </label>
-                    <input accept="image/*" onchange="readURL(this,'#image3');" id="file-input3" type="file" name="image3"
+                    <input accept="image/*" onchange="readURL(this,'#image3');" id="file-input3" type="file" name="image"
                       style="width: 0;height: 0;overflow: hidden;" />
                   </div>
                   <div>
@@ -199,9 +194,7 @@
               <span>0{{ forloop.counter }}</span>
             </div>
             <div>
-              <a href="/user/{{x.slug}}">
-                <h2 class="society-name">{{x.get_full_name}}</h2>
-              </a>
+              <h2 class="society-name">{{x.get_full_name}}</h2>
               <div class="society-content">
                 <div>
                   {% if x.bio %}
@@ -213,9 +206,7 @@
                 </div>
                 <div>
                   {% if x.image %}
-                  <a href="/user/{{x.slug}}">
-                    <img src="/media/{{x.image}}" alt="{{x.get_full_name}}">
-                  </a>
+                  <img src="/media/{{x.image}}" alt="{{x.get_full_name}}">
                   {% endif %}
                 </div>
               </div>
@@ -234,9 +225,7 @@
               <span>0{{ forloop.counter }}</span>
             </div>
             <div>
-              <a href="/user/{{x.slug}}">
-                <h2 class="society-name">{{x.get_full_name}}</h2>
-              </a>
+              <h2 class="society-name">{{x.get_full_name}}</h2>
               <div class="society-content">
                 <div>
                   {% if x.bio %}
@@ -248,10 +237,8 @@
                 </div>
                 <div>
                   {% if x.image %}
-                  <a href="/user/{{x.slug}}">
-                    <img src="/media/{{x.image}}" alt="{{x.get_full_name}}">
-                  </a>
-                {% endif %}
+                  <img src="/media/{{x.image}}" alt="{{x.get_full_name}}">
+                  {% endif %}
                 </div>
               </div>
             </div>

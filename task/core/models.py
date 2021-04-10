@@ -51,7 +51,6 @@ class Society(models.Model):
 class User(AbstractUser):
     email = models.EmailField(_('email address'), unique=True)
     image = models.ImageField(upload_to ='user/', null=True, blank=True) 
-    slug = models.SlugField(max_length=250,null=True,blank=True,unique=True)
     bio = models.CharField(max_length=1500, null=True, blank=True)
     power_value = models.IntegerField(default=0)
     society = models.ForeignKey(Society,null=True, blank=True, on_delete=models.SET_NULL)
@@ -91,9 +90,3 @@ def generateSlugSociety(sender,instance,*arg,**k):
         instance.slug=createSlug(instance,instance.name)
 
 pre_save.connect(generateSlugSociety,sender=Society)
-
-def generateSlugUser(sender,instance,*arg,**k):
-    if not instance.slug:
-        instance.slug=createSlug(instance,instance.get_full_name())
-
-pre_save.connect(generateSlugUser,sender=User)

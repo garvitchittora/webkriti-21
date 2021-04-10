@@ -49,13 +49,13 @@ def societyPage(request,slug):
                             blog.delete()
 
             elif request.POST["form-value"] == "2":
-                if request.POST['blog-id']:
-                    blog_id = request.POST['blog-id']
-                    if Blog.objects.filter(id = blog_id).exists():
-                        blog = Blog.objects.filter(id = blog_id).first()
-                        if request.user == blog.user:
-                            blog.delete()
-                            
+                if request.FILES.get('image'): 
+                    gallery = Gallery(society = society)
+                    gallery.image=request.FILES.get('image')
+                    if request.POST["alt"] != '':
+                        gallery.alt = request.POST.get('alt')  
+                    gallery.save()
+
             elif request.POST["form-value"] == "3":
                 if request.POST['blog-id']:
                     blog_id = request.POST['blog-id']
@@ -80,18 +80,6 @@ def societyPage(request,slug):
     }
 
     return render(request, "404.html",data)  
-
-def userPage(request,slug):
-    societies = Society.objects.all()
-    
-    data = {
-        "society":societies
-    }
-    if User.objects.filter(slug=slug).exists():
-
-        return render(request, "society.html",data)
-
-    return render(request, "404.html",data)   
 
 def account_activation_sent(request):
     return render(request, 'registration/account_activation_sent.html')

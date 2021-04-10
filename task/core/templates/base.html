@@ -88,11 +88,6 @@
           {% endfor %}
         {% if request.user.is_authenticated %}
           <li>
-            <a href="/user/{{request.user.slug}}">
-              Profile
-            </a>
-          </li>
-          <li>
             <a href="/accounts/logout/">
               Logout
             </a>
