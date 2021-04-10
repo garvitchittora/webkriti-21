@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row banner-section">
                 <div class="col-lg-6">
-                    <img src="{% static 'image/svgs/home.svg'%}" class="home-banner-image" />
+                    <img src="{% static 'image/svg/home.svg'%}" class="home-banner-image" />
                 </div>
                 <div class="col-lg-6">
                     <h1>Cultural Societies of IIIT-A</h1>
@@ -34,7 +34,9 @@
                                 </a>
                                 <div class="society-content">
                                     <div>
+                                        {% if x.bio %}
                                         <p>{{x.bio}}</p>
+                                        {% endif %}
                                     </div>
                                     <div>
                                         <a href="/society/{{x.slug}}">

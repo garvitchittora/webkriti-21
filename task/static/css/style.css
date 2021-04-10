@@ -2,6 +2,10 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+img{
+  max-width: 100%;
+}
+
 .nav-logo {
   width: 70px;
   margin: auto;
@@ -25,12 +29,6 @@ body {
 
 .navbar-default .image-container {
   height: 80px;
-}
-
-.user-image {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
 }
 
 .home-banner-image {
@@ -71,6 +69,7 @@ footer .lower-footer a {
 
 .home-page .feature-div {
   border-top: 1px solid rgba(230, 230, 230, 1);
+  padding: 20px 0;
 }
 
 .home-page .banner-section p {
@@ -85,7 +84,6 @@ footer .lower-footer a {
 .home-page .feature-wrapper {
   display: grid;
   grid-template-columns: 100%;
-  margin: 10px;
 }
 
 .home-page .feature-wrapper .feature {
@@ -301,6 +299,254 @@ input:checked + .slider:before {
 .login-form p {
   font-size: 1.8rem;
 }
+
+.profile-page {
+  padding-top: 50px;
+}
+
+.user-image-wrapper {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.profile-page .user-image {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 10px;
+}
+
+.profile-page .followers-following button {
+  color: rgba(26, 137, 23, 1);
+}
+
+.profile-page .followers-following button {
+  color: rgba(26, 137, 23, 1);
+  text-decoration: none;
+  background: transparent;
+  border: 0;
+  outline: 0;
+}
+
+.profile-page .side-left-container {
+  top: auto;
+}
+
+.profile-page .side-left-container .author-info {
+  margin: auto;
+}
+
+.user-heading-wrapper{
+  display: grid;
+  grid-template-columns: auto auto;
+  border-bottom: 1px solid rgba(0,0,0,.05);
+}
+
+.user-heading-wrapper h1{
+  border: none;
+}
+
+
+.side-left-container .author-info p {
+  font-size: 1.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  height: 4em;
+  -webkit-box-orient: vertical;
+}
+
+.side-left-container .author-info h4 {
+  font-weight: bold;
+}
+
+.side-left-container .author-info a {
+  color: rgba(41, 41, 41, 1);
+  text-decoration: none;
+}
+
+.tag-page{
+  padding-bottom: 50px;
+}
+
+.tag-page h1{
+  color: #6C63FF;
+  margin: 0;
+  font-weight: 600;
+  font-size:3rem;
+  border-bottom: 1px solid rgba(0,0,0,.05);
+  padding-bottom: 1rem;
+}
+
+.tag-page .sub-heading{
+  color: rgba(0,0,0,.54);
+  margin: 10px 0;
+  font-size:1.8rem;
+}
+
+
+.tag-page .blogs-wrapper .blog{
+  padding: 15px 20px;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 4%);
+  border: 1px solid rgba(0,0,0,.09);
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  margin-top: 20px;
+}
+
+.tag-page .blogs-wrapper .blog .author-info{
+  display: grid;
+  grid-template-columns: 40px auto 33px;
+  align-items: center;
+  color: #333;
+}
+
+.tag-page .blogs-wrapper .blog .author-info h4{
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.tag-page .blogs-wrapper .blog h2{
+  font-weight: 600;
+  font-family: sans-serif;
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+
+.tag-page .blogs-wrapper .blog .author-info .date{
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.tag-page .blogs-wrapper .blog a{
+  color: #333;
+  text-decoration: none;
+}
+
+.tag-page .blogs-wrapper .blog .author-info img{
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.tag-page .blogs-wrapper .blog .banner-image {
+  text-align: center;
+}
+
+.tag-page .blogs-wrapper .blog .banner-image img{
+  height: 250px;
+  margin-top: 15px;
+}
+
+.tag-page .blogs-wrapper .blog .read-more a{
+  color: rgba(0,0,0,.54);
+  font-size: 1.8rem;
+}
+
+.tag-page .blogs-wrapper button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.tag-page .blogs-wrapper .appreciation-wrapper{
+  display: grid;
+  grid-template-columns: auto auto;
+  margin-top: 15px;
+}
+
+.tag-page .blogs-wrapper .appreciation-wrapper div:last-child{
+  text-align: right;
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 199;
+  padding: 50px 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  max-width: 680px;;
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.profile-form div{
+  margin-bottom: 20px;
+}
+
+.profile-form img{
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 10px;
+  padding:0;
+}
+
 @media (min-width: 768px) {
   .navbar-nav > li {
     float: none;

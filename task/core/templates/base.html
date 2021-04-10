@@ -80,32 +80,29 @@
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        {% if request.user.is_authenticated %}
         <ul class="nav navbar-nav navbar-right">
           {% for x in society %}
           <li>
             <a href="/society/{{x.slug}}">{{x.name}}</a>
           </li>
           {% endfor %}
-          
+        {% if request.user.is_authenticated %}
           <li>
-            <a class="profile-link" href="/user/{{request.user.slug}}">
+            <a href="/user/{{request.user.slug}}">
               Profile
             </a>
           </li>
-        </ul>
+          <li>
+            <a href="/accounts/logout/">
+              Logout
+            </a>
+          </li>
         {% else %}
-        <ul class="nav navbar-nav navbar-right">
           <li>
             <a href="{% url 'login' %}"> Sign In </a>
           </li>
-          <li>
-            <a class="purple-button" href="{% url 'signup' %}">
-              Get Started
-            </a>
-          </li>
-        </ul>
         {% endif %}
+        </ul>
       </div>
     </div>
   </nav>
@@ -124,9 +121,7 @@
         <div class="col-lg-4">
           <h2>About</h2>
           <p>
-            Share your ideas through blogs and also get the best-in-class
-            experience of reading them through audio.<br />
-            You can back up your thoughts and make your writing more credible.
+            Over the years, the student body has come up with a plethora of events and competitions covering a vast spectrum of activities including drama, photography, art expo and much more.
           </p>
         </div>
         <div class="col-lg-4"></div>
@@ -140,8 +135,6 @@
           <div class="col-lg-4">
             <h2>Get Started</h2>
             <a href="/">Home</a>
-            <br />
-            <a href="/create/blog/">Create Blog</a>
           </div>
           <div class="col-lg-4">
             <h2>Support</h2>

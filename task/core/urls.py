@@ -6,4 +6,6 @@ urlpatterns = [
     path('', home, name='home'),
     path('user/<slug>', userPage , name = "userPage"),
     path('society/<slug>', societyPage , name = "societyPage"),
+    path('signup/', signup, name='signup'),
+    path('account_activation_sent/', account_activation_sent, name='account_activation_sent'),
 ]

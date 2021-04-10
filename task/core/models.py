@@ -72,7 +72,6 @@ class Event(models.Model):
     image = models.ImageField(upload_to ='event/', null=True, blank=True)
     bio = models.CharField(max_length=1500, null=True, blank=True)
     society = models.ForeignKey(Society,null=True, blank=True, on_delete=models.SET_NULL)
-    slug = models.SlugField(max_length=250,null=True,blank=True,unique=True)
     name = models.CharField(max_length=150, null=True, blank=True)
 
 def createSlug(instance,text,new_slug=None):
@@ -88,16 +87,13 @@ def createSlug(instance,text,new_slug=None):
     return slug
 
 def generateSlugSociety(sender,instance,*arg,**k):
-    instance.slug=createSlug(instance,instance.name)
+    if not instance.slug:
+        instance.slug=createSlug(instance,instance.name)
 
 pre_save.connect(generateSlugSociety,sender=Society)
 
-def generateSlugEvent(sender,instance,*arg,**k):
-    instance.slug=createSlug(instance,instance.name)
-
-pre_save.connect(generateSlugEvent,sender=Event)
-
 def generateSlugUser(sender,instance,*arg,**k):
-    instance.slug=createSlug(instance,instance.get_full_name())
+    if not instance.slug:
+        instance.slug=createSlug(instance,instance.get_full_name())
 
 pre_save.connect(generateSlugUser,sender=User)

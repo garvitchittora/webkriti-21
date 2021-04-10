@@ -7,7 +7,7 @@ class SocietyAdmin(admin.ModelAdmin):
 admin.site.register(Society, SocietyAdmin)
 
 class EventAdmin(admin.ModelAdmin):
-    list_display = ('name', 'slug')
+    list_display = ('name',)
 admin.site.register(Event, EventAdmin)
 
 admin.site.register(User)
