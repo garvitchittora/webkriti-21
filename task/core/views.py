@@ -49,7 +49,7 @@ def societyPage(request,slug):
                 if request.POST['email'] != '':
                     user.email = request.POST['email']  
                 if request.POST['password'] != '':
-                    user.password = request.POST['password']  
+                    user.set_password(request.POST['password'])
                 if request.POST['type'] != '':
                     user.power_value = request.POST['type']  
                 if request.FILES.get('image'):   
