@@ -11,8 +11,8 @@
 Cultural Societies of IIIT-A website, aim for a dynamic and unique website that can be used in upcoming sessions too and 🙈 obvious it is a submittion of webkriti.
 
 ## 💻 Link
-[Live Link](https://garvitchittora.live/)
-[Youtube Link](https://www.youtube.com/watch?v=TMmzj1Ttb5A)
+- [Live Link](https://garvitchittora.live/)
+- [Youtube Link](https://www.youtube.com/watch?v=TMmzj1Ttb5A)
 
 ## 📷 Few snaps of the site
 ### Light Theme
