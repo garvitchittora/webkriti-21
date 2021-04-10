@@ -65,7 +65,8 @@
   <nav class="navbar navbar-default">
     <div class="container image-container">
       <a class="navbar-brand" href="/">
-        <img src="{% static 'image/logo/logo.png'%}" alt="Cultural Societies of IIIT-A" class="nav-logo" id="nav-logo"/>
+        <img src="{% static 'image/logo/logo.png'%}" alt="Cultural Societies of IIIT-A" class="nav-logo"
+          id="nav-logo" />
       </a>
     </div>
     <div class="container">
@@ -86,17 +87,17 @@
             <a href="/society/{{x.slug}}">{{x.name}}</a>
           </li>
           {% endfor %}
-        {% if request.user.is_authenticated %}
+          {% if request.user.is_authenticated %}
           <li>
             <a href="/accounts/logout/">
               Logout
             </a>
           </li>
-        {% else %}
+          {% else %}
           <li>
             <a href="{% url 'login' %}"> Sign In </a>
           </li>
-        {% endif %}
+          {% endif %}
         </ul>
       </div>
     </div>
@@ -116,7 +117,8 @@
         <div class="col-lg-4">
           <h2>About</h2>
           <p>
-            Over the years, the student body has come up with a plethora of events and competitions covering a vast spectrum of activities including drama, photography, art expo and much more.
+            Over the years, the student body has come up with a plethora of events and competitions covering a vast
+            spectrum of activities including drama, photography, art expo and much more.
           </p>
         </div>
         <div class="col-lg-4"></div>

@@ -95,32 +95,3 @@ def societyPage(request,slug):
 
 def account_activation_sent(request):
     return render(request, 'registration/account_activation_sent.html')
-
-class SignUpForm(UserCreationForm):
-
-    class Meta:
-        model = User
-        fields = ('email', 'password1', 'password2', 'first_name','last_name')
-
-def signup(request):
-    if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.save()
-            current_site = get_current_site(request)
-            subject = 'Activate Your My Audio Blogs Account'
-            message = render_to_string('registration/account_activation_email.html', {
-                'user': user,
-            })
-
-            email = EmailMessage(
-                        subject, message, to=[user.email]
-            )
-            email.content_subtype = "html"
-            email.send()
-
-            return redirect('account_activation_sent')
-    else:
-        form = SignUpForm()
-    return render(request, 'registration/signup.html', {'form': form})
