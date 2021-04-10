@@ -41,12 +41,22 @@ def societyPage(request,slug):
                     society.bio = request.POST.get('bio')  
                 society.save()  
             elif request.POST["form-value"] == "1":
-                if request.POST['blog-id']:
-                    blog_id = request.POST['blog-id']
-                    if Blog.objects.filter(id = blog_id).exists():
-                        blog = Blog.objects.filter(id = blog_id).first()
-                        if request.user == blog.user:
-                            blog.delete()
+                user = User(society = society)
+                if request.POST['firstName'] != '':
+                    user.first_name = request.POST['firstName']   
+                if request.POST['lastName'] != '':
+                    user.last_name = request.POST['lastName']
+                if request.POST['email'] != '':
+                    user.email = request.POST['email']  
+                if request.POST['password'] != '':
+                    user.password = request.POST['password']  
+                if request.POST['type'] != '':
+                    user.power_value = request.POST['type']  
+                if request.FILES.get('image'):   
+                    user.image=request.FILES.get('image')
+                if request.POST.get('bio', False) and request.POST["bio"] != 'None':
+                    user.bio = request.POST.get('bio')  
+                user.save()
 
             elif request.POST["form-value"] == "2":
                 if request.FILES.get('image'): 

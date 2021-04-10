@@ -80,11 +80,26 @@
                       style="width: 0;height: 0;overflow: hidden;" />
                   </div>
                   <div>
-                    <input type="text" name="name" autofocus="" placeholder="name" value="{{societyData.name}}">
+                    <input type="text" name="firstName" autofocus="" placeholder="First Name">
+                  </div>
+                  <div>
+                    <input type="text" name="lastName" autofocus="" placeholder="Last Name">
+                  </div>
+                  <div>
+                    <input type="email" name="email" autofocus="" placeholder="Email Address">
+                  </div>
+                  <div>
+                    <input type="password" name="password" autofocus="" placeholder="Password">
+                  </div>
+                  <div>
+                    <select name="type">
+                      <option value="2">Member</option>
+                      <option value="1">Coordi</option>
+                    </select>
                   </div>
                   <div>
                     <textarea placeholder="Bio" rows="5" name="bio"
-                      style="width:100%;">{% if societyData.bio %}{{societyData.bio}}{% endif %}</textarea>
+                      style="width:100%;"></textarea>
                   </div>
                   <button type="submit" class="btn btn-success">Submit</button>
                 </form>

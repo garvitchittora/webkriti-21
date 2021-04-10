@@ -140,7 +140,7 @@ footer .lower-footer a {
   margin-right: 10px;
 }
 
-.home-page.hero h3.subheading {
+.home-page.hero h2.subheading {
   font-size: 40px;
   color: #6c63ff;
   margin-left: 30px;
@@ -252,6 +252,12 @@ input:checked + .slider:before {
 
 .login-form a {
   color: #333;
+}
+
+.login-form input[type="text"],.login-form input[type="email"],.login-form input[type="password"],.login-form select{
+  min-width: 200px;
+  border-color: #6c63ff;
+  padding: 4px 10px;
 }
 
 .login-form .btn-success {
