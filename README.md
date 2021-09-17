@@ -1,4 +1,4 @@
-<p align="left">
+<p align="center">
     <a href="#" target="_blank">
         <img width="8%" src="https://geekhaven.iiita.ac.in/images/gh.svg" alt="GH-logo">
     </a>
