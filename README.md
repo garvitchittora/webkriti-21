@@ -1,6 +1,6 @@
 <p align="left">
     <a href="#" target="_blank">
-        <img width="8%" src="https://garvitchittora.live/static/image/logo/logo.png" alt="GH-logo">
+        <img width="8%" src="https://geekhaven.iiita.ac.in/images/gh.svg" alt="GH-logo">
     </a>
 </p>
 
